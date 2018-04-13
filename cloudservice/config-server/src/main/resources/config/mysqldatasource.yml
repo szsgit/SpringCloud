@@ -1,0 +1,26 @@
+mybatis:
+  location: classpath:/mybatis-config.xml
+
+mysql:
+  datasource:
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 6000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    name: abo
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.132.143.246:5006/miyu?characterEncoding=utf-8&useSSL=true
+    username: fangzehua
+    password: fangzehua@1
+
+##

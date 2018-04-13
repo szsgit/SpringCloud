@@ -1,0 +1,40 @@
+server:
+  port: 8888
+  tomcat:
+    max-threads: 500
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native #使用本地配置
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config #本地java运行路径
+          #file:c:\\config 本地文件路径
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 10.12.2.175 #www.rsswx.com
+    non-secure-port: ${server.port}
+    instance-id: 配置中心
+    lease-expiration-duration-in-seconds: 30  # 续约到期时间（默认90秒）
+    lease-renewal-interval-in-seconds: 10 # 续约更新时间间隔（默认30秒）
+  client:
+    #healthcheck:
+      #enabled: true	# 开启健康检查（需要spring-boot-starter-actuator依赖）
+    serviceUrl:
+      defaultZone: http://10.12.2.175:8761/eureka/,http://10.12.2.175:8762/eureka/
+
+
+info:
+    build:
+      artifact: config-common
+      name: 配置中心
+      description: 配置中心
+      version: 0.0.1-SNAP
+
+#目前日志选项，启动时指定，部署到生产再采用此配置
+logging:
+  config: classpath:logback-boot.xml

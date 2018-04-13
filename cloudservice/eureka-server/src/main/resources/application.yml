@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev-peer1
+
+#目前日志选项，启动时指定，部署到生产再采用此配置
+#logging:
+#  config: classpath:logback-boot.xml
